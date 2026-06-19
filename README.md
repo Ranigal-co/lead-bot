@@ -1,3 +1,3 @@
 # PhotoBot
 
-A Telegram bot repository.
+Telegram bot for finding clients.
