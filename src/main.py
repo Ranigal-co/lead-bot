@@ -1,8 +1,8 @@
 import asyncio
 import logging
 
-from src.config import KEYWORDS, SEARCH_INTERVAL
-from src.search import client, search_messages, start_client, stop_client
+from src.config import KEYWORDS, SEARCH_INTERVAL, MOCK_MODE
+from src.search import search_messages, start_client, stop_client
 from src.filter import is_lead
 from src.database import is_duplicate, save_message
 from src.notifier import send_lead
@@ -27,6 +27,8 @@ async def process_keyword(keyword: str):
 
 async def main_loop():
     await start_client()
+    if MOCK_MODE:
+        logger.warning("Демо-режим: данные Telethon не настроены, используются тестовые сообщения")
     logger.info("Бот запущен и начинает поиск...")
     try:
         while True:
