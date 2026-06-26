@@ -13,7 +13,6 @@ def _get_client():
         from src.config import GIGACHAT_CREDENTIALS
         _client = GigaChat(
             credentials=GIGACHAT_CREDENTIALS,
-            verify_ssl_certs=False,
         )
     return _client
 

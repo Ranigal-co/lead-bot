@@ -13,7 +13,7 @@ KEYWORDS = [kw.strip().lower() for kw in os.getenv("KEYWORDS", "").split(",") if
 CITIES = [c.strip().lower() for c in os.getenv("CITIES", "").split(",") if c.strip()]
 SEARCH_INTERVAL = int(os.getenv("SEARCH_INTERVAL", "300"))
 
-MOCK_MODE = not (API_ID and API_HASH and PHONE_NUMBER)
+MOCK_MODE = os.getenv("MOCK_MODE", "false").lower() == "true"
 
 VK_TOKEN = os.getenv("VK_TOKEN")
 TG_CHANNELS = [ch.strip() for ch in os.getenv("TG_CHANNELS", "").split(",") if ch.strip()]
