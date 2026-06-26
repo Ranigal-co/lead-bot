@@ -2,7 +2,7 @@ import asyncio
 import logging
 
 from src.config import (
-    KEYWORDS, CITIES, SEARCH_INTERVAL,
+    KEYWORDS, VK_KEYWORDS, CITIES, SEARCH_INTERVAL,
     TG_CHANNELS, VK_TOKEN, AI_FILTER_ENABLED, MOCK_MODE,
 )
 from src.filter import is_lead
@@ -74,11 +74,11 @@ async def process_vk_search():
     """Ищет и обрабатывает посты во ВКонтакте."""
     search_queries = []
     if CITIES:
-        for kw in KEYWORDS:
+        for kw in VK_KEYWORDS:
             for city in CITIES:
                 search_queries.append(f"{kw} {city}")
     else:
-        search_queries = KEYWORDS
+        search_queries = VK_KEYWORDS
 
     if not search_queries:
         return
