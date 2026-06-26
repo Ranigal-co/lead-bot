@@ -3,7 +3,7 @@ import logging
 
 from src.config import (
     KEYWORDS, CITIES, SEARCH_INTERVAL,
-    TG_CHANNELS, VK_TOKEN, AI_FILTER_ENABLED,
+    TG_CHANNELS, VK_TOKEN, AI_FILTER_ENABLED, MOCK_MODE,
 )
 from src.filter import is_lead
 from src.database import is_duplicate, save_message
@@ -111,6 +111,11 @@ async def main_loop():
                 f"пропущено(AI)={stats['skipped_ai']}, "
                 f"отправлено={stats['sent']}"
             )
+
+            if MOCK_MODE:
+                logger.info("Демо-режим: однократный поиск завершён")
+                break
+
             logger.info(f"Следующий запуск через {SEARCH_INTERVAL}с")
             await asyncio.sleep(SEARCH_INTERVAL)
     except Exception as e:
