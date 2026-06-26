@@ -17,3 +17,6 @@ MOCK_MODE = not (API_ID and API_HASH and PHONE_NUMBER)
 
 VK_TOKEN = os.getenv("VK_TOKEN")
 TG_CHANNELS = [ch.strip() for ch in os.getenv("TG_CHANNELS", "").split(",") if ch.strip()]
+
+GIGACHAT_CREDENTIALS = os.getenv("GIGACHAT_CREDENTIALS", "")
+AI_FILTER_ENABLED = os.getenv("AI_FILTER_ENABLED", "false").lower() == "true"
