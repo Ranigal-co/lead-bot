@@ -51,7 +51,7 @@ async def verify(text: str) -> bool:
     ]
 
     try:
-        resp = await client.achat(messages)
+        resp = await client.achat({"messages": messages})
         answer = resp.choices[0].message.content.strip().lower()
         is_lead = answer == "да"
         logger.info(f"GigaChat: {'ЛИД' if is_lead else 'НЕ ЛИД'} — {answer}")
