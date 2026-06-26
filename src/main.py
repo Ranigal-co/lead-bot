@@ -50,8 +50,9 @@ async def process_post(post: dict, source_label: str):
         return
 
     # 5. Отправка
-    logger.info(f"Новый лид! {post['chat_title']}: {text[:100]}...")
+    logger.info(f"Попытка отправки лида... {post['chat_title']}")
     await send_lead(text, post["chat_title"], post["date"])
+    logger.info(f"Лид успешно отправлен в Telegram!")
     save_message(post["id"], post["chat_id"])
     stats["sent"] += 1
     await asyncio.sleep(2)
